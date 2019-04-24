@@ -1,3 +1,4 @@
+import { Album } from "./album";
 export class Usuario {
   public nombre: string;
   public apellido: string;
@@ -6,9 +7,11 @@ export class Usuario {
   public correo: string;
   public verificado: boolean;
   public verificador: string;
+  public albums: Array<Album>;
 
   constructor(correo: string) {
     this.setCorreo(correo);
+    this.albums = [];
   }
 
   setCorreo(correo: string) {
@@ -34,6 +37,11 @@ export class Usuario {
     return `api/verificar/${guid}`;
   }
 
+  agregarAlbum(nombre: string) {
+    this.albums.push(new Album(nombre));
+  }
+
+  //Private Classes
   private S4() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   }
