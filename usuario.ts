@@ -1,4 +1,6 @@
 import { Album } from "./album";
+import { Imagen } from "./imagen";
+
 export class Usuario {
   public nombre: string;
   public apellido: string;
@@ -58,6 +60,10 @@ export class Usuario {
       }
     });
     return album;
+  }
+
+  agregarImagen(albumNombre: string, imagen: Imagen) {
+    this.obtenerAlbum(albumNombre).agregarImagen(imagen);
   }
 
   //Private Classes

@@ -1,5 +1,6 @@
 import { Usuario } from "../usuario";
 import { Album } from "../album";
+import { Imagen } from "../imagen";
 import { expect } from "chai";
 // if you used the '@types/mocha' method to install mocha type definitions, uncomment the following line
 // import 'mocha';
@@ -55,5 +56,15 @@ describe("Obtener Album por nombre", () => {
     usuario.agregarAlbum("Album1");
     var album = usuario.obtenerAlbum("Album1");
     expect(album.nombre).to.equals("Album1");
+  });
+});
+
+describe("Agregar Imagen", () => {
+  it("Se debería agregar una imagen en un album", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""));
+    var album = usuario.obtenerAlbum("Album1");
+    expect(album.imagenes.length).to.equals(1);
   });
 });
