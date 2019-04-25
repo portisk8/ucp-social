@@ -79,3 +79,14 @@ describe("Eliminar imagen", () => {
     expect(album.imagenes).is.empty;
   });
 });
+
+describe("Asingar Caratula", () => {
+  it("Se debería asignar una caratula a partir de nombre de imagen", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""));
+    usuario.asignarCaratula("Album1", "fotoperfil1.jpg");
+    var album = usuario.obtenerAlbum("Album1");
+    expect(album.caratula.nombre).is.equal("fotoperfil1.jpg");
+  });
+});
