@@ -68,3 +68,14 @@ describe("Agregar Imagen", () => {
     expect(album.imagenes.length).to.equals(1);
   });
 });
+
+describe("Eliminar imagen", () => {
+  it("Se debería eliminar una imagen indicando nombre de album e imagen", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""));
+    usuario.quitarImagen("Album1", "fotoperfil1.jpg");
+    var album = usuario.obtenerAlbum("Album1");
+    expect(album.imagenes).is.empty;
+  });
+});

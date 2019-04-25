@@ -65,6 +65,9 @@ export class Usuario {
   agregarImagen(albumNombre: string, imagen: Imagen) {
     this.obtenerAlbum(albumNombre).agregarImagen(imagen);
   }
+  quitarImagen(albumNombre: string, imagenNombre: string) {
+    this.obtenerAlbum(albumNombre).quitarImagen(imagenNombre);
+  }
 
   //Private Classes
   private S4() {
