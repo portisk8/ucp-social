@@ -25,6 +25,12 @@ describe("Quitar Album por nombre", () => {
     usuario.quitarAlbum("Album1");
     expect(usuario.albums).is.empty;
   });
+  it("No debería quitar un album por el nombre si no existe", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.quitarAlbum("Album2");
+    expect(usuario.albums.length).equal(1);
+  });
 });
 
 describe("Obtener Album por nombre", () => {
