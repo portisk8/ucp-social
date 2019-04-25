@@ -20,3 +20,12 @@ describe("Quitar Album por nombre", () => {
     expect(usuario.albums).is.empty;
   });
 });
+
+describe("Obtener Album por nombre", () => {
+  it("Se debería obtener un album por el nombre", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    var album = usuario.obtenerAlbum("Album1");
+    expect(album.nombre).to.equals("Album1");
+  });
+});

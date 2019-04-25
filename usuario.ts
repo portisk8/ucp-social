@@ -47,6 +47,15 @@ export class Usuario {
       }
     });
   }
+  obtenerAlbum(nombre: string): Album {
+    var album = null;
+    this.albums.forEach((item, index) => {
+      if (item.nombre === nombre) {
+        album = item;
+      }
+    });
+    return album;
+  }
 
   //Private Classes
   private S4() {
