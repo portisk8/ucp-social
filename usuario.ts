@@ -10,10 +10,12 @@ export class Usuario {
   public verificado: boolean;
   public verificador: string;
   public albums: Array<Album>;
+  public fotoPerfil: Imagen;
 
   constructor(correo: string) {
     this.setCorreo(correo);
     this.albums = [];
+    this.agregarAlbum("Fotos de Perfil");
   }
 
   setCorreo(correo: string) {
@@ -71,6 +73,13 @@ export class Usuario {
 
   asignarCaratula(albumNombre: string, imagenNombre: string) {
     this.obtenerAlbum(albumNombre).asignarCaratula(imagenNombre);
+  }
+
+  asignarFotoPerfil(nombreImagen: string) {
+    var imagen = this.obtenerAlbum("Fotos de Perfil").obtenerImagen(
+      nombreImagen
+    );
+    if (imagen) this.fotoPerfil = imagen;
   }
 
   //Private Classes

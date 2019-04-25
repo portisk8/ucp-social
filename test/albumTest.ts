@@ -15,14 +15,14 @@ describe("Agregar Album", () => {
     const usuario = new Usuario("correo@ucp.edu.ar");
     usuario.agregarAlbum("Album1");
     usuario.agregarAlbum("Album1");
-    expect(usuario.albums.length).equal(1);
+    expect(usuario.albums.length).equal(2);
   });
   it("Agregar 10 albums con nombre AlbumX", () => {
     const usuario = new Usuario("correo@ucp.edu.ar");
     for (let index = 0; index < 10; index++) {
       usuario.agregarAlbum(`Album ${index}`);
     }
-    expect(usuario.albums.length).equal(10);
+    expect(usuario.albums.length).equal(11);
   });
 });
 
@@ -31,13 +31,13 @@ describe("Quitar Album por nombre", () => {
     const usuario = new Usuario("correo@ucp.edu.ar");
     usuario.agregarAlbum("Album1");
     usuario.quitarAlbum("Album1");
-    expect(usuario.albums).is.empty;
+    expect(usuario.albums.length).equal(1);
   });
   it("No debería quitar un album por el nombre si no existe", () => {
     const usuario = new Usuario("correo@ucp.edu.ar");
     usuario.agregarAlbum("Album1");
     usuario.quitarAlbum("Album2");
-    expect(usuario.albums.length).equal(1);
+    expect(usuario.albums.length).equal(2);
   });
   it("Quitar 'Album 4' luego de insertar 10 albums", () => {
     const usuario = new Usuario("correo@ucp.edu.ar");
@@ -88,5 +88,14 @@ describe("Asingar Caratula", () => {
     usuario.asignarCaratula("Album1", "fotoperfil1.jpg");
     var album = usuario.obtenerAlbum("Album1");
     expect(album.caratula.nombre).is.equal("fotoperfil1.jpg");
+  });
+});
+
+describe("Asingar Foto de perfil", () => {
+  it("Se debería asignar foto de perfil a usuario a partir de nombre de imagen", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarImagen("Fotos de Perfil", new Imagen("fotoperfil1.jpg", ""));
+    usuario.asignarFotoPerfil("fotoperfil1.jpg");
+    expect(usuario.fotoPerfil.nombre).is.equal("fotoperfil1.jpg");
   });
 });
