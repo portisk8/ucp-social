@@ -14,6 +14,7 @@ export class Album {
 
   agregarImagen(imagen: Imagen) {
     this.imagenes.push(imagen);
+    if (!this.caratula) this.asignarCaratula(imagen.nombre);
   }
 
   quitarImagen(nombre: string) {

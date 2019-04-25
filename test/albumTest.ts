@@ -89,6 +89,14 @@ describe("Asingar Caratula", () => {
     var album = usuario.obtenerAlbum("Album1");
     expect(album.caratula.nombre).is.equal("fotoperfil1.jpg");
   });
+  it("Si álbum no tiene carátula se asigna por defecto la primera imagen", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""));
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil2.jpg", ""));
+    var album = usuario.obtenerAlbum("Album1");
+    expect(album.caratula.nombre).is.equal("fotoperfil1.jpg");
+  });
 });
 
 describe("Asingar Foto de perfil", () => {
