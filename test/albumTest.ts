@@ -11,3 +11,12 @@ describe("Agregar Album", () => {
     expect(usuario.albums).not.empty;
   });
 });
+
+describe("Quitar Album por nombre", () => {
+  it("Se debería quitar un album por el nombre", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.quitarAlbum("Album1");
+    expect(usuario.albums).is.empty;
+  });
+});

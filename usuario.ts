@@ -40,6 +40,13 @@ export class Usuario {
   agregarAlbum(nombre: string) {
     this.albums.push(new Album(nombre));
   }
+  quitarAlbum(nombre: string) {
+    this.albums.forEach((item, index) => {
+      if (item.nombre === nombre) {
+        this.albums.splice(index, 1);
+      }
+    });
+  }
 
   //Private Classes
   private S4() {
