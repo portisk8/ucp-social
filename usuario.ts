@@ -38,7 +38,10 @@ export class Usuario {
   }
 
   agregarAlbum(nombre: string) {
-    this.albums.push(new Album(nombre));
+    var album = this.obtenerAlbum(nombre);
+    if (!album) {
+      this.albums.push(new Album(nombre));
+    }
   }
   quitarAlbum(nombre: string) {
     this.albums.forEach((item, index) => {

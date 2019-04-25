@@ -10,6 +10,12 @@ describe("Agregar Album", () => {
     usuario.agregarAlbum("Album1");
     expect(usuario.albums).not.empty;
   });
+  it("No se debería agregar un album con el mismo nombre", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    usuario.agregarAlbum("Album1");
+    expect(usuario.albums.length).equal(1);
+  });
 });
 
 describe("Quitar Album por nombre", () => {
