@@ -16,6 +16,13 @@ describe("Agregar Album", () => {
     usuario.agregarAlbum("Album1");
     expect(usuario.albums.length).equal(1);
   });
+  it("Agregar 10 albums con nombre AlbumX", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    for (let index = 0; index < 10; index++) {
+      usuario.agregarAlbum(`Album ${index}`);
+    }
+    expect(usuario.albums.length).equal(10);
+  });
 });
 
 describe("Quitar Album por nombre", () => {
