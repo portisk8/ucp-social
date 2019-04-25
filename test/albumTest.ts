@@ -38,6 +38,15 @@ describe("Quitar Album por nombre", () => {
     usuario.quitarAlbum("Album2");
     expect(usuario.albums.length).equal(1);
   });
+  it("Quitar 'Album 4' luego de insertar 10 albums", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    for (let index = 0; index < 10; index++) {
+      usuario.agregarAlbum(`Album ${index}`);
+    }
+    usuario.quitarAlbum("Album 4");
+    var album = usuario.obtenerAlbum("Album 4");
+    expect(album).equal(null);
+  });
 });
 
 describe("Obtener Album por nombre", () => {
