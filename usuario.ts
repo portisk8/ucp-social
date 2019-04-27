@@ -64,8 +64,8 @@ export class Usuario {
     return album;
   }
 
-  agregarImagen(albumNombre: string, imagen: Imagen) {
-    this.obtenerAlbum(albumNombre).agregarImagen(imagen);
+  agregarImagen(albumNombre: string, imagen: Imagen, indice?: number) {
+    this.obtenerAlbum(albumNombre).agregarImagen(imagen, indice);
   }
   quitarImagen(albumNombre: string, imagenNombre: string) {
     this.obtenerAlbum(albumNombre).quitarImagen(imagenNombre);

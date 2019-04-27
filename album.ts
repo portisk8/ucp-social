@@ -12,8 +12,12 @@ export class Album {
     this.nombre = nombre;
   }
 
-  agregarImagen(imagen: Imagen) {
-    this.imagenes.push(imagen);
+  agregarImagen(imagen: Imagen, indice?: number) {
+    if (indice) {
+      this.imagenes.splice(indice, 0, imagen);
+    } else {
+      this.imagenes.push(imagen);
+    }
     if (!this.caratula) this.asignarCaratula(imagen.nombre);
   }
 

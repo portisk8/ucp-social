@@ -67,6 +67,21 @@ describe("Agregar Imagen", () => {
     var album = usuario.obtenerAlbum("Album1");
     expect(album.imagenes.length).to.equals(1);
   });
+  it("Se debería agregar una imagen en un album en una posicion dada", () => {
+    const usuario = new Usuario("correo@ucp.edu.ar");
+    usuario.agregarAlbum("Album1");
+    for (let index = 0; index < 10; index++) {
+      usuario.agregarImagen("Album1", new Imagen(`imagen ${index}.jpg`, ""));
+    }
+    usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""), 7);
+    var album = usuario.obtenerAlbum("Album1");
+    var imagen = null;
+    album.imagenes.forEach((item, index) => {
+      if (index == 7) imagen = item;
+    });
+
+    expect(imagen.nombre).to.equals("fotoperfil1.jpg");
+  });
 });
 
 describe("Eliminar imagen", () => {
