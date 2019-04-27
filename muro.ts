@@ -1,10 +1,11 @@
 import { Publicacion } from "./publicacion";
+import { MuroGeneral } from "./muroGeneral";
 
-export class Muro {
+export class Muro extends MuroGeneral {
   public publicaciones: Array<Publicacion>;
 
   constructor() {
-    this.publicaciones = [];
+    super();
   }
 
   agregarPublicacion(
@@ -12,6 +13,20 @@ export class Muro {
     contenido: string,
     espublico?: boolean
   ) {
-    this.publicaciones.push(new Publicacion(descripcion, contenido, espublico));
+    super.agregarPublicacion(descripcion, contenido, espublico);
+    if (espublico) {
+      MuroGeneral.getInstance().agregarPublicacion(
+        descripcion,
+        contenido,
+        espublico
+      );
+    }
+  }
+
+  setPublicacion(publicacion: Publicacion) {
+    this.publicaciones.push(publicacion);
+    if (publicacion.espublico) {
+      MuroGeneral.getInstance().setPublicacion(publicacion);
+    }
   }
 }
