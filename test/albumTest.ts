@@ -75,11 +75,7 @@ describe("Agregar Imagen", () => {
     }
     usuario.agregarImagen("Album1", new Imagen("fotoperfil1.jpg", ""), 7);
     var album = usuario.obtenerAlbum("Album1");
-    var imagen = null;
-    album.imagenes.forEach((item, index) => {
-      if (index == 7) imagen = item;
-    });
-
+    var imagen = album.imagenes[7];
     expect(imagen.nombre).to.equals("fotoperfil1.jpg");
   });
 });

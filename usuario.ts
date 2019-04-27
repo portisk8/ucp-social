@@ -1,5 +1,6 @@
 import { Album } from "./album";
 import { Imagen } from "./imagen";
+import { Muro } from "./muro";
 
 export class Usuario {
   public nombre: string;
@@ -11,11 +12,13 @@ export class Usuario {
   public verificador: string;
   public albums: Array<Album>;
   public fotoPerfil: Imagen;
+  public muro: Muro;
 
   constructor(correo: string) {
     this.setCorreo(correo);
     this.albums = [];
     this.agregarAlbum("Fotos de Perfil");
+    this.muro = new Muro();
   }
 
   setCorreo(correo: string) {
@@ -80,6 +83,10 @@ export class Usuario {
       nombreImagen
     );
     if (imagen) this.fotoPerfil = imagen;
+  }
+
+  publicar(descripcion: string, contenido: string, espublico?: boolean) {
+    this.muro.agregarPublicacion(descripcion, contenido, espublico);
   }
 
   //Private Classes
